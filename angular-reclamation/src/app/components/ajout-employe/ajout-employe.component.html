@@ -1,0 +1,76 @@
+<div class="container" *ngIf="role=='admin'">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-12 col-lg-5 px-4">
+            <div class="card shadow-sm rounded-0">
+                <div class="card-body p-4">
+                    <form 
+                    name="form"
+                    (ngSubmit)="f.form.valid && onSubmit()"
+                    #f="ngForm"
+                    novalidate>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Username :<span
+                  style="color:rgba(28, 28, 168, 0.626)">*</span></label>
+                            <input type="text"
+                            class="form-control"
+                            name="username"
+                            [(ngModel)]="form.username"
+                            required
+                            #username="ngModel" 
+                            [ngClass]="{ 'is-invalid': username.errors && f.submitted }" />
+                            <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+                                <div *ngIf="username.errors.required">Veuillez saisir votre adresse username</div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Email :<span
+                  style="color:rgba(28, 28, 168, 0.626)">*</span></label>
+                            <input type="text"
+                            class="form-control"
+                            name="email"
+                            [(ngModel)]="form.email"
+                            required
+                            #email="ngModel" 
+                            [ngClass]="{ 'is-invalid': email.errors && f.submitted }" />
+                            <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+                                <div *ngIf="email.errors.required">Veuillez saisir votre adresse e-mail</div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Mot de passe :<span style="color:rgba(28, 28, 168, 0.626)">*</span>
+              </label>
+                            <input type="password" type="password"
+                            class="form-control"
+                            name="password"
+                            [(ngModel)]="form.password"
+                            required
+                            minlength="6"
+                            #password="ngModel" 
+                            [ngClass]="{ 'is-invalid': password.errors && f.submitted }" />
+                            <div *ngIf="f.submitted && password.errors && password.errors.required" class="invalid-feedback">
+                                Veuillez saisir votre mot de passe
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center mb-4 ">
+                            <button class="btn font-weight-bolder px-3 py-1 mr-3 " style="background-color:rgba(2, 150, 248, 0.964);color:white;">Ajouter</button>
+                        </div>
+                        <div class="form-group">
+                          <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="f.submitted && isAddFailed"
+                          >
+                            {{ errorMessage }}
+                          </div>
+                        </div>  
+                    </form>
+                    <div class="alert alert-success" *ngIf="isSuccessful">
+                        Your registration is successful!
+                      </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

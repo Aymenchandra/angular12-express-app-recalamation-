@@ -1,0 +1,51 @@
+<div>
+    <div class="container mt-3">
+        <div class="row mt-3">
+            <div class="col-12">
+                <p-card >
+                    <ng-template pTemplate="header">
+                        <img src="../../../assets/profile.png" alt="nophoto" class="background-image bg1">
+                        <i class="material-icons camera-icon background-image" (click)="uploader.click()">flip_camera_ios</i>
+                        <input hidden type="file" #uploader  accept=".png"/>
+                    </ng-template>
+                    <form 
+                    name="form"
+                    #f="ngForm"
+                    novalidate>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Username :<span
+                  style="color:rgba(28, 28, 168, 0.626)">*</span></label>
+                            <input type="text"
+                            class="form-control"
+                            name="username"
+                            [(ngModel)]="form.username"
+                            required
+                            #username="ngModel" 
+                            [ngClass]="{ 'is-invalid': username.errors && f.submitted }" />
+                            <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+                                <div *ngIf="username.errors.required">Veuillez saisir votre adresse username</div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Email :<span
+                  style="color:rgba(28, 28, 168, 0.626)">*</span></label>
+                            <input type="text"
+                            class="form-control"
+                            name="email"
+                            [(ngModel)]="form.email"
+                            required
+                            #email="ngModel" 
+                            [ngClass]="{ 'is-invalid': email.errors && f.submitted }" />
+                            <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+                                <div *ngIf="email.errors.required">Veuillez saisir votre adresse e-mail</div>
+                            </div>
+                        </div> 
+                    </form>
+                </p-card>
+            </div>        
+        </div>
+        
+        
+    </div>
+    
+</div>

@@ -1,0 +1,92 @@
+<div class="container" *ngIf="role=='admin'">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-12 col-lg-5 px-4">
+            <div class="card shadow-sm rounded-0">
+                <div class="card-body p-4">
+                    <form 
+                    name="form"
+                    (ngSubmit)="f.form.valid && onSubmit()"
+                    #f="ngForm"
+                    novalidate>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Code :<span
+                  style="color:rgba(28, 28, 168, 0.626)">*</span></label>
+                            <input type="text"
+                            class="form-control"
+                            disabled
+                            />
+                        </div>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Longitude :<span
+                  style="color:rgba(28, 28, 168, 0.626)">*</span></label>
+                            <input type="text"
+                            class="form-control"
+                            name="longitude"
+                            [(ngModel)]="form.longitude"
+                            required
+                            #longitude="ngModel" 
+                            [ngClass]="{ 'is-invalid': longitude.errors && f.submitted }" />
+                            <div *ngIf="longitude.errors && f.submitted" class="invalid-feedback">
+                                <div *ngIf="longitude.errors.required">Veuillez saisir votre longitude</div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Latitude :<span
+                  style="color:rgba(28, 28, 168, 0.626)">*</span></label>
+                            <input type="text"
+                            class="form-control"
+                            name="latitude"
+                            [(ngModel)]="form.latitude"
+                            required
+                            #latitude="ngModel" 
+                            [ngClass]="{ 'is-invalid': latitude.errors && f.submitted }" />
+                            <div *ngIf="latitude.errors && f.submitted" class="invalid-feedback">
+                                <div *ngIf="latitude.errors.required">Veuillez saisir votre latitude</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center mb-4">
+                            <input type="radio"
+                            value="empty" 
+                            name="remplissage" 
+                            class="mr-1"
+                            [(ngModel)]="form.remplissage"
+                            required
+                            >Empty 
+                            <input type="radio" 
+                            value="full" 
+                            name="remplissage" 
+                            class="ml-4 mr-1"
+                            name="remplissage" 
+                            [(ngModel)]="form.remplissage"
+                            required
+                            >Full
+                            
+                            
+                        </div>
+                        <div *ngIf="f.submitted && !form.remplissage" style="color:red" class="mb-4">
+                            Veuillez saisir votre Empty ou Full
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center mb-4 ">
+                            <button class="btn font-weight-bolder px-3 py-1 mr-3 " style="background-color:rgba(2, 150, 248, 0.964);color:white;">Modifier</button>
+                        </div>
+
+                        <div class="form-group">
+                            <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="f.submitted && isAddFailed"
+                            >
+                              {{ errorMessage }}
+                            </div>
+                          </div>  
+                    </form>
+                    <div class="alert alert-success" *ngIf="isSuccessful">
+                        Successfully modification!
+                      </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<mat-sidenav-container style="background-color: rgba(128, 128, 128, 0.012); " *ngIf="role">
+  <mat-sidenav mode="side" [(opened)]="opened" style="width: 15em;">
+    <button mat-button *ngIf="role=='admin'" (click)="opened=!opened" class="toggle" >Dashboard<mat-icon >arrow_forward_ios</mat-icon></button>
+    <button mat-button class="sub-title" routerLink="/profile" *ngIf="role=='admin' || role=='employe'"><i class="material-icons" >manage_accounts</i>Profile</button>
+    <button mat-button class="sub-title" routerLink="/dashboard" *ngIf="role=='admin'"><i class="material-icons" >dashboard</i>Dashboard</button>
+    <button mat-button class="sub-title" routerLink="/map" ><i class="material-icons" >map</i>Maps</button>
+    <button mat-button class="sub-title" routerLink="/employes" *ngIf="role=='admin'"><i class="material-icons" >work_history</i>Employes</button>
+    <button mat-button class="sub-title" routerLink="/reclamation" *ngIf="role=='admin' || role=='employe' || role=='user'"><i class="material-icons">notifications</i>Reclamation</button>
+    <button mat-button class="sub-title" routerLink="/trash" *ngIf="role=='admin' || role=='employe' || role=='user'"><i class="material-icons">delete</i>Trash</button>
+      
+    <button mat-button class="logout" (click)="logout()" routerLink="/login"><i class="material-icons">power_settings_new</i>Déconnexion</button>
+
+  </mat-sidenav>
+  <mat-sidenav-content style="padding-left: 1rem;" style="height:100vh">
+      <button mat-button *ngIf="!opened" (click)="opened=!opened" style="color: grey;" style="position: absolute;left:0; height:100%;width:0.1%;"><mat-icon>arrow_back_ios</mat-icon></button>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<router-outlet></router-outlet>
+

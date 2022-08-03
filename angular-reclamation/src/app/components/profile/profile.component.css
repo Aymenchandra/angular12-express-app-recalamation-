@@ -1,0 +1,22 @@
+.background-image
+{
+    display: block;
+    margin:2px auto;
+    width:25%;
+}
+.bg1
+{
+    padding-top:20px;
+    width: 18rem;
+    height: 16rem;
+}
+.camera-icon
+{
+    background-color: white;
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 5px ;
+    border-radius:50% ;
+    color:rgb(16, 125, 203);
+    cursor: pointer;
+}
